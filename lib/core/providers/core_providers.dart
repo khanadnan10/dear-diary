@@ -1,0 +1,14 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:local_auth/local_auth.dart';
+
+final secureStorageProvider = Provider<FlutterSecureStorage>((ref) {
+  return const FlutterSecureStorage(
+    aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    iOptions: IOSOptions(accessibility: KeychainAccessibility.unlocked_this_device),
+  );
+});
+
+final localAuthProvider = Provider<LocalAuthentication>((ref) {
+  return LocalAuthentication();
+});
